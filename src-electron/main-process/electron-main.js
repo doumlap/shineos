@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, icpMain } from 'electron'
 
 /**
  * Set `__statics` path to static files in production;
@@ -15,10 +15,11 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
     useContentSize: true
   })
+
+  mainWindow.setMenu(null);
+  //mainWindow.setKiosk(true);
 
   mainWindow.loadURL(process.env.APP_URL)
 

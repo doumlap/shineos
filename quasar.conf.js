@@ -28,6 +28,20 @@ module.exports = function (ctx) {
       // extractCSS: false,
       // useNotifier: false,
       extendWebpack (cfg) {
+        // cfg.module.rules.push({
+        //   enforce: 'pre',
+        //   test: /\.(js|vue)$/,
+        //   loader: 'eslint-loader',
+        //   exclude: /(node_modules|quasar)/
+        // }, {
+        //   enforce: 'pre',
+        //   test: /\.(ts|vue)$/,
+        //   exclude: /node_modules|vue\/src/,
+        //   loader: 'ts-loader',
+        //   options: {
+        //     appendTsSuffixTo: [/\.vue$/]
+        //   }
+        // })
       }
     },
     devServer: {

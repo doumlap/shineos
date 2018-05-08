@@ -6,9 +6,6 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App.vue??'
 }
 </script>
-
-<style>
-</style>
