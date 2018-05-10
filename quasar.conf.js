@@ -1,5 +1,4 @@
 // Configuration for your app
-
 module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
@@ -28,20 +27,7 @@ module.exports = function (ctx) {
       // extractCSS: false,
       // useNotifier: false,
       extendWebpack (cfg) {
-        // cfg.module.rules.push({
-        //   enforce: 'pre',
-        //   test: /\.(js|vue)$/,
-        //   loader: 'eslint-loader',
-        //   exclude: /(node_modules|quasar)/
-        // }, {
-        //   enforce: 'pre',
-        //   test: /\.(ts|vue)$/,
-        //   exclude: /node_modules|vue\/src/,
-        //   loader: 'ts-loader',
-        //   options: {
-        //     appendTsSuffixTo: [/\.vue$/]
-        //   }
-        // })
+        // cfg.target = 'electron'
       }
     },
     devServer: {
@@ -50,11 +36,9 @@ module.exports = function (ctx) {
       open: true // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!
-    framework: 'all'
-    ,
+    framework: 'all',
     // animations: 'all' --- includes all animations
-    animations: [
-    ],
+    animations: 'all',
     pwa: {
       cacheExt: 'js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3',
       manifest: {
@@ -99,7 +83,7 @@ module.exports = function (ctx) {
     },
     electron: {
       extendWebpack (cfg) {
-        // do something with cfg
+
       },
       packager: {
         // OS X / Mac App Store

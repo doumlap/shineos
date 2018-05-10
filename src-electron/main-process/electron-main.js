@@ -1,4 +1,13 @@
-import { app, BrowserWindow, icpMain } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron';
+import ComponentLoader from './component_loader';
+
+let bugsnag = require('bugsnag');
+bugsnag.register('837be7a4eb807c262b261ec50418eb0a', { autoCaptureSessions: true });
+bugsnag.onBeforeNotify(notif => {
+  let meta = notif.events[0].metaData;
+  meta.app = {version: '0.0.1a'};
+  meta.user = { id: '08517fe9-8776-4467-ad47-e5d9496a769e', sn: '1ggrt5ddv1', name: 'Dominic Lapointe'};
+});
 
 /**
  * Set `__statics` path to static files in production;
@@ -8,7 +17,7 @@ if (process.env.PROD) {
   global.__statics = require('path').join(__dirname, 'statics').replace(/\\/g, '\\\\')
 }
 
-let mainWindow
+let mainWindow;
 
 function createWindow () {
   /**
@@ -21,11 +30,13 @@ function createWindow () {
   mainWindow.setMenu(null);
   //mainWindow.setKiosk(true);
 
-  mainWindow.loadURL(process.env.APP_URL)
+  mainWindow.loadURL(process.env.APP_URL);
 
   mainWindow.on('closed', () => {
     mainWindow = null
-  })
+  });
+
+  ComponentLoader.instanciateModules(mainWindow, app, bugsnag);
 }
 
 app.on('ready', createWindow)
