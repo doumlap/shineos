@@ -1,5 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import ComponentLoader from './component_loader';
+import wifi from '../components/core/wifi_helper';
+import sound from '../components/core/sound_helper';
 
 let bugsnag = require('bugsnag');
 bugsnag.register('837be7a4eb807c262b261ec50418eb0a', { autoCaptureSessions: true });
@@ -36,7 +38,11 @@ function createWindow () {
     mainWindow = null
   });
 
-  ComponentLoader.instanciateModules(mainWindow, app, bugsnag);
+  mainWindow.toggleDevTools();
+
+  new wifi(mainWindow, app, bugsnag);
+  new sound(mainWindow, app, bugsnag);
+  //ComponentLoader.instanciateModules(mainWindow, app, bugsnag);
 }
 
 app.on('ready', createWindow)
