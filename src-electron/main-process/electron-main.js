@@ -38,8 +38,6 @@ function createWindow () {
     mainWindow = null
   });
 
-  mainWindow.toggleDevTools();
-
   new wifi(mainWindow, app, bugsnag);
   new sound(mainWindow, app, bugsnag);
   //ComponentLoader.instanciateModules(mainWindow, app, bugsnag);
