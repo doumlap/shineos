@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import ComponentLoader from './component_loader';
+// import ComponentLoader from './component_loader';
 import wifi from '../components/core/wifi_helper';
 import sound from '../components/core/sound_helper';
 
@@ -33,6 +33,8 @@ function createWindow () {
   //mainWindow.setKiosk(true);
 
   mainWindow.loadURL(process.env.APP_URL);
+
+  mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null

@@ -86,14 +86,7 @@ module.exports = function (ctx) {
 
       },
       packager: {
-        // OS X / Mac App Store
-        // appBundleId: '',
-        // appCategoryType: '',
-        // osxSign: '',
-        // protocol: 'myapp://path',
-
-        // Window only
-        // win32metadata: { ... }
+        asar: false
       }
     },
 

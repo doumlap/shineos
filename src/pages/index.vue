@@ -10,17 +10,41 @@
             <q-item-main label="Changer l'arriere plan" @click.native="changeBackground()"/>
           </q-item>
           <q-item v-close-overlay>
-            <q-item-main label="Configuration"/>
+            <q-item-main label="Widgets" @click.native="showWidgets()"/>
           </q-item>
         </q-list>
       </q-context-menu>
     </q-page>
-    <q-modal v-model="opened">
+    <!-- <q-modal v-model="bckModalOpen">
       <div class="row desktop_wallpaper_panel">
         <div v-for="(img, index) in backgrounds" v-bind:key="`img-${index}`" class="col-2 justify-center">
           <img :src="img" v-on:click="selectBackground(index)"/>
         </div>
       </div>
+    </q-modal> -->
+    <q-modal v-model="widgetModelOpen">
+      <q-modal-layout>
+          <q-toolbar slot="header">
+            <q-btn
+              flat
+              round
+              dense
+              v-close-overlay
+              icon="keyboard_arrow_left"
+            />
+            <q-toolbar-title>
+              Header
+            </q-toolbar-title>
+          </q-toolbar>
+          <div class="layout-padding">
+            <h1>Modal</h1>
+            <q-btn
+              color="primary"
+              v-close-overlay
+              label="Close" />
+            <p>This is a Modal presenting a Layout.</p>
+          </div>
+        </q-modal-layout>
     </q-modal>
   </div>
 </template>
@@ -31,7 +55,8 @@ import Component from 'vue-class-component'
 
 @Component({name: 'Index'})
 export default class Index extends Vue {
-    opened = false;
+    bckModalOpen = false;
+    widgetModelOpen = false;
     background = '';
     backgrounds = [
       'https://fsb.zobj.net/crop.php?r=WLC63MpZBMGrAEd5lFgEjHizBE51D32FdDTajNNpED8ZhbA4eLYExeqUDgM4j3ngcSuOby4CasBS1fm5AipSUDwfkLUSxaz4OD3tg0Ih90xJRd65nJDQDVfPSekndNRoQ6tX64oOJtImC3i-',
@@ -43,16 +68,20 @@ export default class Index extends Vue {
     ];
 
     mounted() {
-      this.background = this.backgrounds[5];
+      this.background = this.backgrounds[3];
     }
 
     changeBackground() {
-      this.opened = true;
+      this.bckModalOpen = true;
+    }
+
+    showWidgets() {
+      this.widgetModelOpen = true;
     }
 
     selectBackground(index) {
       this.background = this.backgrounds[index];
-      this.opened = false;
+      this.bckModalOpen = false;
     }
 }
 </script>
