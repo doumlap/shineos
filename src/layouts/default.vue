@@ -1,21 +1,8 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-layout-header>
-
-    </q-layout-header>
-    <q-page-container>
+    <q-page-container id="container">
       <router-view />
     </q-page-container>
-    <q-layout-footer>
-      <ostime class="float-right on-left"></ostime>
-      <div class="float-right on-left" style="border-right: 1px solid black; height: 50px;"></div>
-      <wifi class="float-right on-left" ></wifi>
-      <div class="float-right on-left" style="border-right: 1px solid black; height: 50px;"></div>
-      <sound class="float-right on-left"></sound>
-    </q-layout-footer>
-    <!-- <q-layout-drawer :content-class="['bg-grey-3', 'q-pa-sm']" side="right" v-model="drawer" :overlay="true">
-      ...
-    </q-layout-drawer> -->
   </q-layout>
 </template>
 
@@ -29,5 +16,29 @@ export default {
 }
 </script>
 <style>
+  .container {
+    min-width: 100vh;
+  }
 
+  .q-layout {
+    background-color: black;
+  }
+
+  .app-container.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    background: url('http://images.all-free-download.com/images/graphicthumb/metal_plate_background_vector_290130.jpg') repeat 0 0;
+    background-size: 300px 300px;
+    opacity: 0.15;
+    border: 5px solid white;
+    box-shadow: inset 0 0 0 #fff,
+            inset 0 0 10px  #fff,
+            inset 0 0 15px  #eee,
+            inset 0 0 20px  #ccc,
+            inset 0 0 25px  #aaa
+  }
+
+  .app-container {
+   border: 7px solid grey;
+   background: none;
+  }
 </style>

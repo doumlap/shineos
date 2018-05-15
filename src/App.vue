@@ -23,3 +23,8 @@ export default {
   }
 }
 </script>
+<style>
+  #q-app {
+    overflow: hidden;
+  }
+</style>
